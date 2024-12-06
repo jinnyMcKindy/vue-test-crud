@@ -2,7 +2,7 @@
   <div :class="['side-menu cursor-pointer', { 'w-10': isClosed, 'w-72': !isClosed }]" style="transition: width 0.3s;">
     <div class="p-4 bg-gray-800 text-white flex justify-between" @click="toggleMenu">
       <div></div>
-      <div>x</div>
+      <div>&#8594;</div>
     </div>
     <div v-show="!isClosed">
       <div class="tabs flex justify-between p-4">

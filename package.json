@@ -21,16 +21,19 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@pinia/testing": "^0.1.7",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
     "@types/vue": "^1.0.31",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "typescript": "^5.7.2",
     "vite": "^6.0.1",
+    "vitest": "^2.1.8",
     "vue-tsc": "^2.1.10"
   }
 }

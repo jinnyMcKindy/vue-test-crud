@@ -3,14 +3,12 @@
 @tailwind utilities;
 
 /* App.vue */
-#app {
-    display: flex;
-    flex-direction: row;
-  }
-  
   @media (max-width: 768px) {
-    #app {
-      flex-direction: column;
+    .mobile-padding {
+      padding: 12px;
+    }
+    .mobile-text-center {
+      text-align: center;
     }
   }
   

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="client" class="p-4 bg-white rounded shadow-md">
+  <div class="p-4 bg-white rounded shadow-md">
     <img :src="client.avatar" alt="Avatar" class="w-24 h-24 rounded-full mx-auto" />
     <p class="text-center text-xl font-semibold mt-4">{{ client.first_name }} {{ client.last_name }}</p>
     <p class="text-center text-gray-600">{{ client.email }}</p>

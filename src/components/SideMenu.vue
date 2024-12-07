@@ -1,5 +1,5 @@
 <template>
-  <div :class="['side-menu cursor-pointer']">
+  <div :class="['side-menu cursor-pointer', { 'sidemenu__hidden': isClosed }]">
     <div class="p-4 bg-gray-800 text-white flex justify-between" @click="toggleMenu":class="{ 'w-10': isClosed, 'w-72': !isClosed }" style="transition: width 0.3s;">
       <div></div>
       <div>&#8594;</div>
@@ -33,6 +33,7 @@ const selectTab = (tab: string) => (selectedTab.value = tab);
 .side-menu {
   transition: width 0.3s;
 }
+
 .tabs {
   width: 288px;;
 }
@@ -54,6 +55,11 @@ const selectTab = (tab: string) => (selectedTab.value = tab);
 }
 .content {
   width: 288px;
+}
+@media (max-width: 768px) {
+  .sidemenu__hidden{
+    height: 0;
+  }
 }
 </style>
   

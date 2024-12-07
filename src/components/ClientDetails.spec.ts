@@ -20,8 +20,8 @@ describe('ClientDetails.vue', () => {
 
     // Assert: Проверяем, что компоненты рендерятся с правильными данными
     expect(wrapper.find('img').attributes('src')).toBe('avatar1.jpg');
-    expect(wrapper.find('p.text-xl').text()).toBe('John Doe');
-    expect(wrapper.find('p.text-gray-600').text()).toBe('john@example.com');
+    expect(wrapper.find('p.fullname').text()).toBe('John Doe');
+    expect(wrapper.find('p.email').text()).toBe('john@example.com');
     expect(wrapper.find('textarea').element.value).toBe('Test comment');
     expect(wrapper.find('input[type="number"]').element.value).toBe('4');
   });

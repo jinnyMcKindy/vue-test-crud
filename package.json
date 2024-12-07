@@ -11,14 +11,12 @@
   "dependencies": {
     "@jest/globals": "^29.7.0",
     "@radix-icons/vue": "^1.0.0",
-    "@vue/compiler-sfc": "^3.5.13",
     "@vue/runtime-core": "^3.5.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "radix-vue": "^1.9.10",
     "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7",
-    "vue": "^3.5.13"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@pinia/testing": "^0.1.7",
@@ -28,6 +26,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/vue": "^1.0.31",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/compiler-sfc": "^3.5.13",
     "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.20",
     "jsdom": "^25.0.1",
@@ -36,6 +35,7 @@
     "typescript": "^5.7.2",
     "vite": "^6.0.1",
     "vitest": "^2.1.8",
+    "vue": "^3.5.13",
     "vue-tsc": "^2.1.10"
   }
 }

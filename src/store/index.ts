@@ -47,14 +47,12 @@ export const useClientStore = defineStore('clientStore', {
         this.fetchClients();
       }
     },
-  // Fetch all users from the API
     async fetchClients() {
       try {
         const response = await fetch('https://reqres.in/api/users?page=1&per_page=6');
         const data = await response.json();
         if (data && data.data) {
-          // Map API users to Client interface
-          const fetchedClients: Client[] = data.data.map((user: any) => ({
+          const fetchedClients: Client[] = data.data.map((user: Client) => ({
             id: user.id,
             avatar: user.avatar,
             first_name: user.first_name,

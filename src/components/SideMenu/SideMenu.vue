@@ -1,10 +1,10 @@
 <template>
-  <div :class="['side-menu cursor-pointer', { 'sidemenu__hidden': isClosed }]">
-    <div class="p-4 bg-gray-800 text-white flex justify-between" @click="toggleMenu":class="{ 'w-10': isClosed, 'w-72': !isClosed }" style="transition: width 0.3s;">
-      <div></div>
-      <div>&#8594;</div>
+  <div :class="['side-menu', { 'sidemenu__hidden': isClosed }]">
+    <div class="side-menu__header p-4 bg-gray-800 text-white flex justify-end cursor-pointer" :class="isClosedClass" @click="toggleMenu">
+      <div v-if="isClosed">&#8594;</div>
+      <div v-else>&#8592;</div>
     </div>
-      <div :class="['wrapper',{ 'wrapper__hidden': isClosed }]">
+      <div :class="['wrapper m-auto sm:m-0', { 'wrapper__hidden': isClosed }]">
         <div class="tabs flex justify-between p-4">
         <button @click="selectTab('clients')" :class="['py-2 px-4 rounded-t-lg tab', { 'font-bold bg-gray-200': selectedTab === 'clients', 'bg-gray-100': selectedTab !== 'clients' }]">Clients</button>
         <button @click="selectTab('rating')" :class="['py-2 px-4 rounded-t-lg tab', { 'font-bold bg-gray-200': selectedTab === 'rating', 'bg-gray-100': selectedTab !== 'rating' }]">Rating</button>
@@ -18,19 +18,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import ClientList from './ClientList.vue';
-import RatingList from './RatingList.vue';
+import { ref, computed } from 'vue';
+import ClientList from '../ClientList/ClientList.vue';
+import RatingList from '../RatingList/RatingList.vue';
 
 const isClosed = ref(false);
 const selectedTab = ref('clients');
 
 const toggleMenu = () => (isClosed.value = !isClosed.value);
 const selectTab = (tab: string) => (selectedTab.value = tab);
+const isClosedClass = computed(() => isClosed.value ? 'w-10' : 'sm:w-72 w-100');
 </script>
 
 <style scoped>
-.side-menu {
+.side-menu, .side-menu__header {
   transition: width 0.3s;
 }
 
@@ -59,6 +60,13 @@ const selectTab = (tab: string) => (selectedTab.value = tab);
 @media (max-width: 768px) {
   .sidemenu__hidden{
     height: 0;
+  }
+  .tabs, .wrapper:not(.wrapper__hidden), .content {
+    width: 100%;;
+  }
+  .tab {
+    width: 100%;
+    max-width: initial;
   }
 }
 </style>

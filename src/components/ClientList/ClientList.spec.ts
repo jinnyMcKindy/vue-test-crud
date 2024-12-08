@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { setActivePinia, createPinia } from 'pinia';
 import ClientList from './ClientList.vue'; // Adjust path to your component
-import { useClientStore } from '../store'; // Adjust to your store path
+import { useClientStore } from '../../store'; // Adjust to your store path
 import { describe, beforeEach, it, expect, vi } from 'vitest';
 
 

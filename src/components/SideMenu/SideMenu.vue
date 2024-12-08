@@ -19,8 +19,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import ClientList from './ClientList.vue';
-import RatingList from './RatingList.vue';
+import ClientList from '../ClientList/ClientList.vue';
+import RatingList from '../RatingList/RatingList.vue';
 
 const isClosed = ref(false);
 const selectedTab = ref('clients');

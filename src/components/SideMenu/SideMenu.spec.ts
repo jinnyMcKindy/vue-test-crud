@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import SideMenu from './SideMenu.vue';
-import ClientList from './ClientList.vue';
-import RatingList from './RatingList.vue';
+import ClientList from '../ClientList/ClientList.vue';
+import RatingList from '../RatingList//RatingList.vue';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 

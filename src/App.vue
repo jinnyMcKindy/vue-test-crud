@@ -1,9 +1,7 @@
 <template>
-  <div class="flex flex-col md:flex-row w-full">
-    <SideMenu class="w-full md:w-auto" />
-    <div
-      class="flex-1 p-4 mt-16 md:mt-20 flex justify-center items-center w-full"
-    >
+  <div class="flex flex-col sm:flex-row w-full">
+    <SideMenu class="w-full sm:w-auto" />
+    <div class="m-auto mt-[15%]">
       <ClientDetails v-if="store.selectedClient" />
       <div v-else class="text-center text-gray-500">
         No clients selected

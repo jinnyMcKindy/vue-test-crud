@@ -29,7 +29,7 @@ import { useClientStore, Client } from '../store';
 
 const store = useClientStore();
 
-const searchQuery = ref<string>('');
+const searchQuery = ref('');
 
 const filteredClients = computed<Client[]>(() =>
   store.sortedClients.filter((client: Client) =>

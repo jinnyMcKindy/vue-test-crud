@@ -6,7 +6,7 @@ import { describe, beforeEach, it, expect, vi } from 'vitest';
 
 
 describe(ClientList, () => {
-  // Pinia setup before each test
+
   beforeEach(() => {
     setActivePinia(createPinia()); // Initialize Pinia store before each test
   });
@@ -33,7 +33,7 @@ describe(ClientList, () => {
   });
 
   it('filters clients based on the search query', async () => {
-    // Arrange
+    // Arrange: Set up the store with some clients
     const store = useClientStore();
     store.setClients([
       { id: 1, avatar: 'avatar1.jpg', first_name: 'John', last_name: 'Doe', email: 'john@example.com', rating: 5 },
@@ -51,7 +51,7 @@ describe(ClientList, () => {
   });
 
   it('calls selectClient when a client is clicked', async () => {
-    // Arrange
+    // Arrange: Set up the store with some clients
     const store = useClientStore();
     store.setClients([
       { id: 1, avatar: 'avatar1.jpg', first_name: 'John', last_name: 'Doe', email: 'john@example.com', rating: 5 },

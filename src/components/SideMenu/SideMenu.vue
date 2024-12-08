@@ -44,15 +44,14 @@ const isClosedClass = computed(() => isClosed.value ? 'w-10' : 'sm:w-72 w-100');
 }
 .wrapper {
   overflow: hidden;
+  transition: 0.3s;
 }
 .wrapper.wrapper__hidden {
   width: 0;
-  transition: 0.3s;
 }
 
 .wrapper:not(.wrapper__hidden) {
   width: 288px;
-  transition: 0.3s;
 }
 .content {
   width: 288px;
@@ -68,6 +67,13 @@ const isClosedClass = computed(() => isClosed.value ? 'w-10' : 'sm:w-72 w-100');
     width: 100%;
     max-width: initial;
   }
+  .wrapper.wrapper__hidden {
+    height: 0;
+  }
+  .wrapper, .side-menu, .side-menu__header {
+    transition: width 0s;
+  }
+
 }
 </style>
   

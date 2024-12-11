@@ -5,6 +5,11 @@ export default defineConfig({
   plugins: [vue()],
   test: {
     environment: 'jsdom',
-    globals: true, // Provides globals like `describe`, `it`, etc.
+    globals: true,
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+    }
   },
 });

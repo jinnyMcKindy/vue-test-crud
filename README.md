@@ -57,7 +57,7 @@ To run this project locally, follow these steps:
 
 Run unit tests using Vitest:
 ```bash
-npm run test
+npx vitest
 ```
 
 ## Contributing

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useClientStore } from '../../store';
+import { useClientStore } from '@/store';
 
 const store = useClientStore();
 const sortedByRating = computed(() => store.sortedByRating);

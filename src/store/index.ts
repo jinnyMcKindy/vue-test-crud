@@ -49,7 +49,7 @@ export const useClientStore = defineStore('clientStore', {
     },
     async fetchClients() {
       try {
-        const response = await fetch('https://reqres.in/api/users?page=1&per_page=6');
+        const response = await fetch(import.meta.env.VITE_API_URL);
         const data = await response.json();
         if (data && data.data) {
           const fetchedClients: Client[] = data.data.map((user: Client) => ({

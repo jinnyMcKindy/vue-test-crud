@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import './assets/index.css'
-import { useClientStore } from './store';
-import SideMenu from './components/SideMenu/SideMenu.vue';
-import ClientDetails from './components/ClientDetails/ClientDetails.vue';
+import '@/assets/index.css'
+import { useClientStore } from '@/store';
+import SideMenu from '@/components/SideMenu/SideMenu.vue';
+import ClientDetails from '@/components/ClientDetails/ClientDetails.vue';
 
 const store = useClientStore();
 store.loadFromLocalStorage();

@@ -1,9 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { setActivePinia, createPinia } from 'pinia';
-import ClientList from '../ClientList/ClientList.vue';
-import { useClientStore } from '../../store';
+import ClientList from '@/components/ClientList/ClientList.vue';
+import { useClientStore } from '@/store';
 import { describe, beforeEach, it, expect, vi } from 'vitest';
-import { nextTick } from 'vue';
 
 describe('ClientList.vue', () => {
   

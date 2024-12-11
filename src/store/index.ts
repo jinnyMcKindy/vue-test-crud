@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-
 export interface Client {
   id: number;
   avatar: string;
@@ -7,18 +6,26 @@ export interface Client {
   last_name: string;
   email: string;
   comment?: string;
-  rating: number;
+  rating?: number;
+}
+
+export type Rating = {
+  [key: number]: {
+    rating: number;
+    comment: string;
+  }
 }
 
 export const useClientStore = defineStore('clientStore', {
   state: () => ({
     clients: [] as Client[],
     selectedClient: null as Client | null,
+    ratings: {} as Rating
   }),
 
   getters: {
     sortedClients: (state) => [...state.clients].sort((a, b) => a.last_name.localeCompare(b.last_name)),
-    sortedByRating: (state) => [...state.clients].sort((a, b) => b.rating - a.rating),
+    sortedByRating: (state) => [...state.clients].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)),
   },
 
   actions: {
@@ -28,44 +35,37 @@ export const useClientStore = defineStore('clientStore', {
     selectClient(clientId: number) {
       this.selectedClient = this.clients.find((client: Client) => client.id === clientId) || null;
     },
-    updateClientData(clientId: number, comment: string, rating: number) {
-      const client: Client | undefined = this.clients.find((client: Client) => client.id === clientId);
-      if (client) {
-        client.comment = comment;
-        client.rating = rating;
-        this.saveToLocalStorage();
-      }
-    },
     saveToLocalStorage() {
-      localStorage.setItem('clients', JSON.stringify(this.clients));
+      localStorage.setItem('ratings', JSON.stringify(this.ratings));
+    },
+    updateRating(id: number, rating: number, comment: string) {
+      if (!this.ratings[id]) {
+        this.ratings[id] = { rating: 0, comment: '' };
+      }
+      this.ratings[id] = { rating, comment };
+    },
+    getRating(id: number) {
+      return this.ratings[id] || { rating: 0, comment: '' };
     },
     loadFromLocalStorage() {
-      const data = localStorage.getItem('clients');
+      const data = localStorage.getItem('ratings');
       if (data) {
-        this.clients = JSON.parse(data);
-      } else {
-        this.fetchClients();
+        this.ratings = JSON.parse(data);
       }
+    },
+    savetoLocalStorage() {
+      localStorage.setItem('ratings', JSON.stringify(this.ratings));
     },
     async fetchClients() {
       try {
         const response = await fetch(import.meta.env.VITE_API_URL);
         const data = await response.json();
         if (data && data.data) {
-          const fetchedClients: Client[] = data.data.map((user: Client) => ({
-            id: user.id,
-            avatar: user.avatar,
-            first_name: user.first_name,
-            last_name: user.last_name,
-            email: user.email,
-            comment: '',
-            rating: 0,
-          }));
-          this.setClients(fetchedClients);
+          this.setClients(data.data);
         }
       } catch (error) {
         console.error('Failed to fetch clients:', error);
       }
-    },
-  },
+    }
+  }
 });

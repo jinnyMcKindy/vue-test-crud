@@ -17,16 +17,16 @@ import { defineProps, defineEmits } from 'vue';
 import type { Tab } from './types';
 
 interface Props {
-    text: string;
+    text: Tab;
     selectedTab: Tab;
-    tabName: string;
+    tabName: Tab;
 }
   
 const props = defineProps<Props>();
 
 const emit = defineEmits(['update:selectedTab']);
 
-function selectTab(tab: string) {
+function selectTab(tab: Tab) {
     emit('update:selectedTab', tab);
 }
   </script>

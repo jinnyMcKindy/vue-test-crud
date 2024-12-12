@@ -13,9 +13,10 @@
 <script setup lang="ts">
 import '@/assets/index.css'
 import { useClientStore } from '@/store';
-import Main from '@/components/SideMenu/Main.vue';
+import Main from '@/components/Main/Main.vue';
 import ClientDetails from '@/components/ClientDetails/ClientDetails.vue';
 
 const store = useClientStore();
+store.fetchClients();
 store.loadFromLocalStorage();
 </script>

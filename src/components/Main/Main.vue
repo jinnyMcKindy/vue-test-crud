@@ -33,6 +33,7 @@ const tabs: Tab[] = ['Clients', 'Rating'];
 
 const toggleMenu = () => (isClosed.value = !isClosed.value);
 const isClosedClass = computed(() => isClosed.value ? 'w-10' : 'sm:w-72 w-100');
+
 </script>
 
 <style scoped>

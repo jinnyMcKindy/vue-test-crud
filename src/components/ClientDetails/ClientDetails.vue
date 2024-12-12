@@ -36,7 +36,7 @@ import { ref, computed, watch } from 'vue';
 import { useClientStore, Rating } from '@/store';
 
 const store = useClientStore();
-const comment = ref(store.selectedClient?.comment ?? '');
+const comment = ref(store.selectedRating.comment ?? '');
 const rating = ref<number>(store.selectedRating.rating ?? 0);
 const error = ref('');
 

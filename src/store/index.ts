@@ -16,16 +16,19 @@ export type Rating = {
   }
 }
 
+
+
 export const useClientStore = defineStore('clientStore', {
   state: () => ({
     clients: [] as Client[],
     selectedClient: null as Client | null,
-    ratings: {} as Rating
+    ratings: {} as Rating,
+    selectedRating: {} as Rating[keyof Rating],
   }),
 
   getters: {
     sortedClients: (state) => [...state.clients].sort((a, b) => a.last_name.localeCompare(b.last_name)),
-    sortedByRating: (state) => [...state.clients].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)),
+    sortedByRating: (state) => [...state.clients].sort((a, b) => (state.ratings[b.id].rating ?? 0) - (state.ratings[a.id].rating ?? 0)),
   },
 
   actions: {
@@ -34,6 +37,7 @@ export const useClientStore = defineStore('clientStore', {
     },
     selectClient(clientId: number) {
       this.selectedClient = this.clients.find((client: Client) => client.id === clientId) || null;
+      this.selectedRating = this.getRating(clientId);
     },
     saveToLocalStorage() {
       localStorage.setItem('ratings', JSON.stringify(this.ratings));

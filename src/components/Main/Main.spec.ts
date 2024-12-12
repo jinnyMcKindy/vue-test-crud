@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import SideMenu from './SideMenu.vue';
+import Main from './Main.vue';
 import ClientList from '@/components/ClientList/ClientList.vue';
 import RatingList from '@/components/RatingList//RatingList.vue';
 import { describe, it, expect, beforeEach } from 'vitest';
@@ -13,7 +13,7 @@ describe('SideMenu.vue', () => {
   });
 
   it('renders with initial state', async () => {
-    const wrapper = mount(SideMenu);
+    const wrapper = mount(Main);
 
     // Check initial tab states
     const tabs = wrapper.findAll('button');
@@ -27,7 +27,7 @@ describe('SideMenu.vue', () => {
   });
   
   it('switches tabs and renders correct content', async () => {
-    const wrapper = mount(SideMenu);
+    const wrapper = mount(Main);
 
     const tabs = wrapper.findAll('button');
 

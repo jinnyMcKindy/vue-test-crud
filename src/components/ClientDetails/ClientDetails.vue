@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { useClientStore, Client, Rating } from '@/store';
+import { useClientStore, Rating } from '@/store';
 
 const store = useClientStore();
 const comment = ref(store.selectedClient?.comment ?? '');

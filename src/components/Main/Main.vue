@@ -6,12 +6,16 @@
     </div>
       <div :class="['wrapper m-auto sm:m-0', { 'wrapper__hidden': isClosed }]">
         <div class="tabs flex justify-between p-4">
-        <button @click="selectTab('clients')" :class="['py-2 px-4 rounded-t-lg tab', { 'font-bold bg-gray-200': selectedTab === 'clients', 'bg-gray-100': selectedTab !== 'clients' }]">Clients</button>
-        <button @click="selectTab('rating')" :class="['py-2 px-4 rounded-t-lg tab', { 'font-bold bg-gray-200': selectedTab === 'rating', 'bg-gray-100': selectedTab !== 'rating' }]">Rating</button>
+          <ButtonTab 
+            v-for="tab in tabs" 
+            :key="tab" 
+            :text="tab" 
+            :selectedTab="selectedTab" 
+            :tabName="tab" 
+            @update:selectedTab="selectedTab = $event" />
         </div>
         <div class="content p-4">
-        <ClientList v-if="selectedTab === 'clients'" />
-        <RatingList v-if="selectedTab === 'rating'" />
+          <LazyLoadTabs :selectedTab="selectedTab" />
         </div>
       </div>
   </div>
@@ -19,15 +23,17 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import ClientList from '../ClientList/ClientList.vue';
-import RatingList from '../RatingList/RatingList.vue';
+import LazyLoadTabs from './LazyLoadTabs.vue';
+import ButtonTab from './ButtonTab.vue';
+import type { Tab } from './types';
 
 const isClosed = ref(false);
-const selectedTab = ref('clients');
+const selectedTab = ref<Tab>('Clients');
+const tabs: Tab[] = ['Clients', 'Rating'];
 
 const toggleMenu = () => (isClosed.value = !isClosed.value);
-const selectTab = (tab: string) => (selectedTab.value = tab);
 const isClosedClass = computed(() => isClosed.value ? 'w-10' : 'sm:w-72 w-100');
+
 </script>
 
 <style scoped>
@@ -73,7 +79,6 @@ const isClosedClass = computed(() => isClosed.value ? 'w-10' : 'sm:w-72 w-100');
   .wrapper, .side-menu, .side-menu__header {
     transition: width 0s;
   }
-
 }
 </style>
   

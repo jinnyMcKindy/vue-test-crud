@@ -33,22 +33,22 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { useClientStore, Client } from '../../store';
+import { useClientStore, Rating } from '@/store';
 
 const store = useClientStore();
-const comment = ref(store.selectedClient?.comment ?? '');
-const rating = ref<number>(store.selectedClient?.rating ?? 0);
+const comment = ref(store.selectedRating.comment ?? '');
+const rating = ref<number>(store.selectedRating.rating ?? 0);
 const error = ref('');
 
 // Watch for changes in selectedClient and update comment and rating accordingly
-watch(() => store.selectedClient, (selectedClient: Client | null) => {
-  if (selectedClient) {
-    comment.value = selectedClient.comment ?? '';
-    rating.value = selectedClient.rating;
+watch(() => store.selectedRating, (selectedRating: Rating[keyof Rating] | null) => {
+  if (selectedRating) {
+    comment.value = selectedRating.comment ?? '';
+    rating.value = selectedRating.rating;
   }
 });
 
-const client = computed(() => store.selectedClient);
+const client = computed(() => store.selectedClient); 
 
 const saveData = () => {
   if (client.value) {

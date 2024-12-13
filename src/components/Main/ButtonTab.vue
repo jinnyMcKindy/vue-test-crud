@@ -13,7 +13,6 @@
   </template>
   
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
 import type { Tab } from './types';
 
 interface Props {

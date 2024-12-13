@@ -20,10 +20,14 @@ describe('ClientDetails.vue', () => {
         first_name: 'John',
         last_name: 'Doe',
         email: 'john.doe@example.com',
-        comment: '',
-        rating: 0,
       },
     ];
+    clientStore.ratings = {
+      1: {
+        rating: 5,
+        comment: 'Good job!',
+      } 
+    };
     clientStore.selectClient(1);
   });
 
@@ -89,8 +93,8 @@ describe('ClientDetails.vue', () => {
     await wrapper.find('textarea').setValue('Great job!');
     await wrapper.find('form').trigger('submit.prevent');
 
-    const updatedClient = clientStore.clients.find((client) => client.id === 1);
-    expect(updatedClient?.comment).toBe('Great job!');
-    expect(updatedClient?.rating).toBe(8);
+    const rating = clientStore.ratings[1];
+    expect(rating?.comment).toBe('Great job!');
+    expect(rating?.rating).toBe(8);
   });
 });

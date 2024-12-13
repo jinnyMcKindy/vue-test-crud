@@ -16,8 +16,6 @@ export type Rating = {
   }
 }
 
-
-
 export const useClientStore = defineStore('clientStore', {
   state: () => ({
     clients: [] as Client[],
@@ -35,6 +33,9 @@ export const useClientStore = defineStore('clientStore', {
   actions: {
     setClients(clients: Client[]) {
       this.clients = clients;
+    },
+    setRatings(ratings: Rating) {
+      this.ratings = ratings;
     },
     selectClient(clientId: number) {
       this.selectedClient = this.clients.find((client: Client) => client.id === clientId) || null;
@@ -56,7 +57,7 @@ export const useClientStore = defineStore('clientStore', {
     loadFromLocalStorage() {
       const data = localStorage.getItem('ratings');
       if (data) {
-        this.ratings = JSON.parse(data);
+        this.setRatings(JSON.parse(data));
       }
     },
     savetoLocalStorage() {
